@@ -1,0 +1,103 @@
+# ============================================================
+# .gitignore para proyecto Xcode / Swift / macOS
+# MonitorPro
+# ============================================================
+
+# --------------------
+# Xcode
+# --------------------
+# Archivos de usuario (configuración local de cada desarrollador)
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+
+# Archivos derivados y caché de compilación
+DerivedData/
+build/
+*.o
+*.d
+
+# Archivos de playground
+*.playground/timeline.xctimeline
+*.playground/playground.xcworkspace
+
+# Archivos de resultado de test
+*.xcresult
+
+# Archivos temporales de Xcode
+*.moved-aside
+*.orig
+
+# --------------------
+# Swift Package Manager
+# --------------------
+.build/
+.swiftpm/
+/Packages/
+Package.resolved
+
+# --------------------
+# CocoaPods (si se usa)
+# --------------------
+Pods/
+*.xcworkspace
+!default.xcworkspace
+
+# --------------------
+# Carthage (si se usa)
+# --------------------
+Carthage/Build/
+Carthage/Checkouts/
+
+# --------------------
+# macOS
+# --------------------
+# Archivos del sistema de macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Archivos de spotlight
+.Spotlight-V100
+
+# Archivos de la papelera de macOS
+.Trashes
+.fseventsd
+
+# Thumbnails
+Thumbs.db
+
+# --------------------
+# Archivos de entorno
+# --------------------
+.env
+*.env.*
+*.pem
+*.p12
+*.mobileprovision
+*.provisionprofile
+
+# --------------------
+# Archivos de IDE externos
+# --------------------
+# AppCode
+*.idea/
+
+# Visual Studio Code
+.vscode/
+
+# --------------------
+# Archivos de log y temporales
+# --------------------
+*.log
+*.tmp
+*.swp
+
+# --------------------
+# Archivos de distribución / Release
+# --------------------
+*.ipa
+*.dSYM/
+*.dSYM.zip
+*.app.dSYM.zip
