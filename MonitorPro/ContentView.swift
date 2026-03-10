@@ -16,7 +16,7 @@ struct ContentView: View {
                 InfoRow(label: "Procesador:", value: monitor.processorName, icon: "cpu", color: .orange)
                 InfoRow(label: "Núcleos:", value: "\(monitor.activeCores) Cores", icon: "number", color: .blue)
                 InfoRow(label: "Tiempo Activo:", value: monitor.uptime, icon: "clock", color: .green)
-                InfoRow(label: "Disco:", value: monitor.diskSpace, icon: "internaldrive", color: .gray)
+                InfoRow(label: "Disco:", value: "\(monitor.diskFreeGB)GB libres de \(monitor.diskTotalGB)GB", icon: "internaldrive", color: .gray)
             }
 
             Divider()
