@@ -1,5 +1,6 @@
 import SwiftUI
 import Charts
+import ServiceManagement
 
 struct ContentView: View {
     @ObservedObject var monitor: SystemMonitor
