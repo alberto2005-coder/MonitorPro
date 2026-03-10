@@ -1,4 +1,5 @@
 import SwiftUI
+import Charts
 
 struct ContentView: View {
     @StateObject var monitor = SystemMonitor()
@@ -21,15 +22,50 @@ struct ContentView: View {
 
             Divider()
 
+            // Sección de Red (Subida/Bajada)
+            HStack(spacing: 15) {
+                HStack(spacing: 4) {
+                    Image(systemName: "arrow.down.circle.fill").foregroundColor(.indigo)
+                    Text(monitor.downloadSpeed).font(.system(size: 11, weight: .medium, design: .monospaced))
+                }
+                HStack(spacing: 4) {
+                    Image(systemName: "arrow.up.circle.fill").foregroundColor(.purple)
+                    Text(monitor.uploadSpeed).font(.system(size: 11, weight: .medium, design: .monospaced))
+                }
+            }.frame(maxWidth: .infinity, alignment: .center)
+            
+            Divider()
+
             // Sección de Carga Dinámica
             VStack(alignment: .leading, spacing: 5) {
                 HStack {
-                    Label("Carga CPU", systemImage: "waveform.path.ecg").font(.caption).foregroundColor(.secondary)
-                    Spacer()
-                    Text("\(Int(monitor.cpuLoad))%").font(.caption).bold()
+                    Label("Carga CPU (\(Int(monitor.cpuLoad))%)", systemImage: "waveform.path.ecg").font(.caption).foregroundColor(.secondary)
                 }
-                ProgressView(value: monitor.cpuLoad, total: 100)
-                    .tint(.orange)
+                
+                // Gráfica Histórica de CPU
+                Chart {
+                    ForEach(Array(monitor.cpuHistory.enumerated()), id: \.offset) { index, value in
+                        LineMark(
+                            x: .value("Tiempo", index),
+                            y: .value("Carga", value)
+                        )
+                        .interpolationMethod(.monotone)
+                        .foregroundStyle(.orange)
+                        
+                        AreaMark(
+                            x: .value("Tiempo", index),
+                            y: .value("Carga", value)
+                        )
+                        .interpolationMethod(.monotone)
+                        .foregroundStyle(.orange.opacity(0.2))
+                    }
+                }
+                .chartYScale(domain: 0...100)
+                .chartXAxis(.hidden)
+                .chartYAxis(.hidden)
+                .frame(height: 40)
+                
+                Spacer().frame(height: 10)
                 
                 HStack {
                     Label("RAM App", systemImage: "memorychip").font(.caption).foregroundColor(.secondary)
