@@ -2,13 +2,38 @@ import SwiftUI
 import Charts
 
 struct ContentView: View {
-    @StateObject var monitor = SystemMonitor()
+    @ObservedObject var monitor: SystemMonitor
+    @State private var launchAtLogin = SMAppService.mainApp.status == .enabled
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Image(systemName: "bolt.fill").foregroundColor(.yellow)
                 Text("Monitor de Sistema Pro").font(.headline)
+                Spacer()
+                Menu {
+                    Toggle("Arrancar al iniciar sesión", isOn: $launchAtLogin)
+                        .onChange(of: launchAtLogin) { newValue in
+                            do {
+                                if newValue {
+                                    try SMAppService.mainApp.register()
+                                } else {
+                                    try SMAppService.mainApp.unregister()
+                                }
+                            } catch {
+                                print("Error SMAppService: \(error)")
+                            }
+                        }
+                    Divider()
+                    Button("Salir", role: .destructive) {
+                        NSApplication.shared.terminate(nil)
+                    }
+                } label: {
+                    Image(systemName: "gearshape.fill")
+                        .foregroundColor(.secondary)
+                }
+                .menuStyle(.borderlessButton)
+                .fixedSize()
             }.frame(maxWidth: .infinity, alignment: .center)
             
             Divider()
@@ -78,11 +103,6 @@ struct ContentView: View {
 
             Divider()
 
-            Button(action: { NSApplication.shared.terminate(nil) }) {
-                Text("Cerrar Dashboard").frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(.red)
         }
         .padding()
         .frame(width: 320)
