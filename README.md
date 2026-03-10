@@ -92,7 +92,7 @@
 
 1. **Clona el repositorio:**
    ```bash
-   git clone https://github.com/tu-usuario/MonitorPro.git
+   git clone https://github.com/alberto2005-coder/MonitorPro.git
    cd MonitorPro
    ```
 
@@ -264,7 +264,7 @@ Hecho con ❤️ y Swift en macOS
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/MonitorPro.git
+   git clone https://github.com/alberto2005-coder/MonitorPro.git
    cd MonitorPro
    ```
 
@@ -334,7 +334,7 @@ SystemMonitor (ObservableObject)
 | **SwiftUI**             | User interface framework                       |
 | **Foundation**          | Process and system management                  |
 | **MenuBarExtra**        | Menu bar integration                           |
-| **mach / sysctlbyname** | Low-level system metrics reading       |
+| **mach / sysctlbyname** | Low-level system metrics reading               |
 | **FileManager**         | Disk space queries                             |
 
 ---
