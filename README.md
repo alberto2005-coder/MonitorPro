@@ -59,18 +59,19 @@
 
 ## ✨ Características
 
-| Métrica            | Descripción                      | Actualización |
-|--------------------|----------------------------------|---------------|
-| 🟠 **CPU**        | Nombre y modelo del procesador   | Al inicio     |
-| 🔵 **Núcleos**    | Número de núcleos activos        | Al inicio     |
-| 🟢 **Uptime**     | Tiempo de actividad del sistema  | Cada segundo  |
-| ⚫ **Disco**      | Espacio libre y total en GB      | Cada segundo  |
-| 📊 **Carga CPU**  | Porcentaje de uso del procesador | Cada segundo  |
-| 💾 **RAM App**    | Memoria RAM usada por la app     | Cada segundo  |
+| Métrica            | Descripción                                              | Actualización |
+|--------------------|----------------------------------------------------------|---------------|
+| 🟠 **CPU**        | Nombre y modelo del procesador                           | Al inicio     |
+| 🔵 **Núcleos**    | Número de núcleos activos                                | Al inicio     |
+| 🟢 **Uptime**     | Tiempo de actividad del sistema                          | Cada segundo  |
+| ⚫ **Disco**      | Espacio libre y total en GB                              | Cada segundo  |
+| 📊 **Carga CPU**  | Uso real por diferencial de ticks (user+sys vs idle)     | Cada segundo  |
+| 💾 **RAM App**    | Memoria RAM usada por la app                             | Cada segundo  |
 
 - ✅ Vive en la **barra de menú** — no ocupa espacio en el Dock
 - ✅ Interfaz **nativa SwiftUI** — fluida y eficiente
 - ✅ Actualizaciones en **tiempo real** (cada 1 segundo)
+- ✅ Carga de CPU **medida con precisión real** por núcleo (diferencial de ticks)
 - ✅ Botón para **cerrar** la app desde el propio dashboard
 - ✅ **0 dependencias externas** — usa únicamente frameworks de Apple
 
@@ -140,10 +141,14 @@ MonitorPro/
 ```
 SystemMonitor (ObservableObject)
     │
-    ├── Timer cada 1s ──► getMemoryUsage()
-    │                ──► getFreeDiskSpace()
-    │                ──► getUptime()
-    │                ──► updateCPULoad()
+    ├── init() ──► getCPUName()  (una sola vez)
+    │
+    ├── Timer cada 1s ──► getMemoryUsage()   → usageMB
+    │                ──► updateDiskSpace()   → diskFreeGB, diskTotalGB
+    │                ──► getUptime()         → uptime
+    │                ──► updateCPULoad()     → cpuLoad (ticks reales)
+    │
+    ├── deinit ──► timer.invalidate()  (limpieza de memoria)
     │
     └── @Published vars ──► ContentView (SwiftUI) ──► UI actualizada
 ```
@@ -226,18 +231,19 @@ Hecho con ❤️ y Swift en macOS
 
 ## ✨ Features
 
-| Metric             | Description                      | Refresh Rate |
-|--------------------|----------------------------------|--------------|
-| 🟠 **CPU**         | Processor name and model         | On start     |
-| 🔵 **Cores**       | Number of active processor cores | On start     |
-| 🟢 **Uptime**      | System uptime                    | Every second |
-| ⚫ **Disk**        | Free and total disk space in GB  | Every second |
-| 📊 **CPU Load**    | Processor usage percentage       | Every second |
-| 💾 **App RAM**     | RAM memory used by the app       | Every second |
+| Metric             | Description                                              | Refresh Rate |
+|--------------------|----------------------------------------------------------|--------------|
+| 🟠 **CPU**         | Processor name and model                                 | On start     |
+| 🔵 **Cores**       | Number of active processor cores                         | On start     |
+| 🟢 **Uptime**      | System uptime                                            | Every second |
+| ⚫ **Disk**        | Free and total disk space in GB                          | Every second |
+| 📊 **CPU Load**    | Real usage via tick differential (user+sys vs idle)      | Every second |
+| 💾 **App RAM**     | RAM memory used by the app                               | Every second |
 
 - ✅ Lives in the **menu bar** — no Dock icon
 - ✅ Native **SwiftUI** interface — smooth and efficient
 - ✅ **Real-time** updates (every 1 second)
+- ✅ CPU load measured with **real per-core tick differential**
 - ✅ **Close** button built into the dashboard
 - ✅ **Zero external dependencies** — uses only Apple frameworks
 
@@ -307,10 +313,14 @@ MonitorPro/
 ```
 SystemMonitor (ObservableObject)
     │
-    ├── Timer every 1s ──► getMemoryUsage()
-    │                 ──► getFreeDiskSpace()
-    │                 ──► getUptime()
-    │                 ──► updateCPULoad()
+    ├── init() ──► getCPUName()  (once)
+    │
+    ├── Timer every 1s ──► getMemoryUsage()   → usageMB
+    │                 ──► updateDiskSpace()   → diskFreeGB, diskTotalGB
+    │                 ──► getUptime()         → uptime
+    │                 ──► updateCPULoad()     → cpuLoad (real ticks)
+    │
+    ├── deinit ──► timer.invalidate()  (memory cleanup)
     │
     └── @Published vars ──► ContentView (SwiftUI) ──► Updated UI
 ```
