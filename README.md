@@ -49,9 +49,16 @@
 
 <div align="center">
 
-![MonitorPro Dashboard](screenshots/screenshot.png)
+### V2 - Gráficos, Red y Menú Dinámico
+<p align="center">
+  <img src="screenshots/screenshot_v2_1.png" width="45%" alt="MonitorPro V2 Dashboard" />
+  <img src="screenshots/screenshot_v2_2.png" width="45%" alt="MonitorPro V2 Menu" />
+</p>
 
-*Dashboard desplegable de MonitorPro en acción*
+*Dashboard desplegable de MonitorPro V2 en acción*
+
+### V1 - Versión Inicial
+![MonitorPro Dashboard V1](screenshots/screenshot.png)
 
 </div>
 
@@ -221,9 +228,16 @@ Hecho con ❤️ y Swift en macOS
 
 <div align="center">
 
-![MonitorPro Dashboard](screenshots/screenshot.png)
+### V2 - Charts, Network & Dynamic Menu
+<p align="center">
+  <img src="screenshots/screenshot_v2_1.png" width="45%" alt="MonitorPro V2 Dashboard" />
+  <img src="screenshots/screenshot_v2_2.png" width="45%" alt="MonitorPro V2 Menu" />
+</p>
 
-*MonitorPro dropdown dashboard in action*
+*MonitorPro V2 dropdown dashboard in action*
+
+### V1 - Initial Release
+![MonitorPro Dashboard V1](screenshots/screenshot.png)
 
 </div>
 
