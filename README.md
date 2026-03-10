@@ -111,10 +111,10 @@
 
 ## 📖 Uso
 
-1. Al ejecutar la app, aparece un icono **⊙** en tu barra de menú superior.
+1. Al ejecutar la app, verás un icono dinámico en tu barra de menú superior con el % de CPU.
 2. Haz **clic** en el icono para abrir el dashboard.
-3. Visualiza en tiempo real el estado de tu sistema.
-4. Haz clic en **"Cerrar Dashboard"** para terminar la app.
+3. Visualiza en tiempo real el estado de tu sistema (Gráfica de CPU, Red, Disco, etc).
+4. Haz clic en el **engranaje ⚙️** superior derecho para habilitar el **Auto-arranque** o salir de la app.
 
 ---
 
@@ -283,10 +283,10 @@ Hecho con ❤️ y Swift en macOS
 
 ## 📖 Usage
 
-1. When you launch the app, a **⊙** icon appears in your top menu bar.
+1. When you launch the app, a dynamic icon appears in your top menu bar showing the CPU %.
 2. **Click** the icon to open the dashboard.
-3. View your system's stats in real time.
-4. Click **"Close Dashboard"** to quit the app.
+3. View your system's stats in real time (CPU Chart, Network, Disk, etc).
+4. Click the **gear icon ⚙️** at the top right to enable **Launch at login** or quit the app.
 
 ---
 
