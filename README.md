@@ -47,33 +47,26 @@
 
 ## 📸 Capturas de pantalla
 
-```
-[ Icono en barra de menú ]  →  [ Dashboard desplegable ]
-        🔋 Monitor                ⚡ Monitor de Sistema Pro
-                                  ─────────────────────────
-                                  🟠 Procesador: Apple M2
-                                  🔢 Núcleos: 8 Cores
-                                  🟢 Tiempo Activo: 3h 42m
-                                  ⚫ Disco: 120GB libres de 512GB
+<div align="center">
 
-                                  Carga CPU    ████░░░░  12%
-                                  RAM App      ██░░░░░░  48 MB
+![MonitorPro Dashboard](screenshots/screenshot.png)
 
-                                  [ Cerrar Dashboard ]
-```
+*Dashboard desplegable de MonitorPro en acción*
+
+</div>
 
 ---
 
 ## ✨ Características
 
-| Métrica | Descripción | Actualización |
-|---|---|---|
-| 🟠 **CPU** | Nombre y modelo del procesador | Al inicio |
-| 🔵 **Núcleos** | Número de núcleos activos | Al inicio |
-| 🟢 **Uptime** | Tiempo de actividad del sistema | Cada segundo |
-| ⚫ **Disco** | Espacio libre y total en GB | Cada segundo |
-| 📊 **Carga CPU** | Porcentaje de uso del procesador | Cada segundo |
-| 💾 **RAM App** | Memoria RAM usada por la app | Cada segundo |
+| Métrica            | Descripción                      | Actualización |
+|--------------------|----------------------------------|---------------|
+| 🟠 **CPU**        | Nombre y modelo del procesador   | Al inicio     |
+| 🔵 **Núcleos**    | Número de núcleos activos        | Al inicio     |
+| 🟢 **Uptime**     | Tiempo de actividad del sistema  | Cada segundo  |
+| ⚫ **Disco**      | Espacio libre y total en GB      | Cada segundo  |
+| 📊 **Carga CPU**  | Porcentaje de uso del procesador | Cada segundo  |
+| 💾 **RAM App**    | Memoria RAM usada por la app     | Cada segundo  |
 
 - ✅ Vive en la **barra de menú** — no ocupa espacio en el Dock
 - ✅ Interfaz **nativa SwiftUI** — fluida y eficiente
@@ -159,13 +152,13 @@ SystemMonitor (ObservableObject)
 
 ## 🧰 Tecnologías utilizadas
 
-| Tecnología | Uso |
-|---|---|
-| **SwiftUI** | Framework de interfaz de usuario |
-| **Foundation** | Manejo de procesos y sistema |
-| **MenuBarExtra** | Integración en barra de menú |
-| **mach / sysctlbyname** | Lectura de métricas del sistema a bajo nivel |
-| **FileManager** | Consulta del espacio en disco |
+| Tecnología             | Uso                                          |
+|------------------------|----------------------------------------------|
+| **SwiftUI**            | Framework de interfaz de usuario             |
+| **Foundation**         | Manejo de procesos y sistema                 |
+| **MenuBarExtra**       | Integración en barra de menú                 |
+| **mach / sysctlbyname**| Lectura de métricas del sistema a bajo nivel |
+| **FileManager**        | Consulta del espacio en disco                |
 
 ---
 
@@ -221,33 +214,26 @@ Hecho con ❤️ y Swift en macOS
 
 ## 📸 Screenshots
 
-```
-[ Menu bar icon ]  →  [ Dropdown dashboard ]
-     🔋 Monitor           ⚡ System Monitor Pro
-                          ─────────────────────────
-                          🟠 Processor: Apple M2
-                          🔢 Cores: 8 Cores
-                          🟢 Uptime: 3h 42m
-                          ⚫ Disk: 120GB free of 512GB
+<div align="center">
 
-                          CPU Load     ████░░░░  12%
-                          App RAM      ██░░░░░░  48 MB
+![MonitorPro Dashboard](screenshots/screenshot.png)
 
-                          [ Close Dashboard ]
-```
+*MonitorPro dropdown dashboard in action*
+
+</div>
 
 ---
 
 ## ✨ Features
 
-| Metric | Description | Refresh Rate |
-|---|---|---|
-| 🟠 **CPU** | Processor name and model | On start |
-| 🔵 **Cores** | Number of active processor cores | On start |
-| 🟢 **Uptime** | System uptime | Every second |
-| ⚫ **Disk** | Free and total disk space in GB | Every second |
-| 📊 **CPU Load** | Processor usage percentage | Every second |
-| 💾 **App RAM** | RAM memory used by the app | Every second |
+| Metric             | Description                      | Refresh Rate |
+|--------------------|----------------------------------|--------------|
+| 🟠 **CPU**         | Processor name and model         | On start     |
+| 🔵 **Cores**       | Number of active processor cores | On start     |
+| 🟢 **Uptime**      | System uptime                    | Every second |
+| ⚫ **Disk**        | Free and total disk space in GB  | Every second |
+| 📊 **CPU Load**    | Processor usage percentage       | Every second |
+| 💾 **App RAM**     | RAM memory used by the app       | Every second |
 
 - ✅ Lives in the **menu bar** — no Dock icon
 - ✅ Native **SwiftUI** interface — smooth and efficient
@@ -333,13 +319,13 @@ SystemMonitor (ObservableObject)
 
 ## 🧰 Technologies Used
 
-| Technology | Usage |
-|---|---|
-| **SwiftUI** | User interface framework |
-| **Foundation** | Process and system management |
-| **MenuBarExtra** | Menu bar integration |
-| **mach / sysctlbyname** | Low-level system metrics reading |
-| **FileManager** | Disk space queries |
+| Technology              | Usage                                          |
+|-------------------------|------------------------------------------------|
+| **SwiftUI**             | User interface framework                       |
+| **Foundation**          | Process and system management                  |
+| **MenuBarExtra**        | Menu bar integration                           |
+| **mach / sysctlbyname** | Low-level system metrics reading       |
+| **FileManager**         | Disk space queries                             |
 
 ---
 
