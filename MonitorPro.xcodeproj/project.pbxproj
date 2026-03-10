@@ -1,0 +1,577 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		845E26632F600FEB00A3BD6E /* MonitorProApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E26622F600FEB00A3BD6E /* MonitorProApp.swift */; };
+		845E26652F600FEB00A3BD6E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E26642F600FEB00A3BD6E /* ContentView.swift */; };
+		845E26672F600FED00A3BD6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845E26662F600FED00A3BD6E /* Assets.xcassets */; };
+		845E266A2F600FED00A3BD6E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845E26692F600FED00A3BD6E /* Preview Assets.xcassets */; };
+		845E26752F600FED00A3BD6E /* MonitorProTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E26742F600FED00A3BD6E /* MonitorProTests.swift */; };
+		845E267F2F600FED00A3BD6E /* MonitorProUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E267E2F600FED00A3BD6E /* MonitorProUITests.swift */; };
+		845E26812F600FED00A3BD6E /* MonitorProUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E26802F600FED00A3BD6E /* MonitorProUITestsLaunchTests.swift */; };
+		845E268E2F60106000A3BD6E /* SystemMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E268D2F60106000A3BD6E /* SystemMonitor.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		845E26712F600FED00A3BD6E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 845E26572F600FEB00A3BD6E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 845E265E2F600FEB00A3BD6E;
+			remoteInfo = MonitorPro;
+		};
+		845E267B2F600FED00A3BD6E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 845E26572F600FEB00A3BD6E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 845E265E2F600FEB00A3BD6E;
+			remoteInfo = MonitorPro;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		845E265F2F600FEB00A3BD6E /* MonitorPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonitorPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		845E26622F600FEB00A3BD6E /* MonitorProApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorProApp.swift; sourceTree = "<group>"; };
+		845E26642F600FEB00A3BD6E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		845E26662F600FED00A3BD6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		845E26692F600FED00A3BD6E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		845E266B2F600FED00A3BD6E /* MonitorPro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MonitorPro.entitlements; sourceTree = "<group>"; };
+		845E26702F600FED00A3BD6E /* MonitorProTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonitorProTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		845E26742F600FED00A3BD6E /* MonitorProTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorProTests.swift; sourceTree = "<group>"; };
+		845E267A2F600FED00A3BD6E /* MonitorProUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonitorProUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		845E267E2F600FED00A3BD6E /* MonitorProUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorProUITests.swift; sourceTree = "<group>"; };
+		845E26802F600FED00A3BD6E /* MonitorProUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorProUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		845E268D2F60106000A3BD6E /* SystemMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMonitor.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		845E265C2F600FEB00A3BD6E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		845E266D2F600FED00A3BD6E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		845E26772F600FED00A3BD6E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		845E26562F600FEB00A3BD6E = {
+			isa = PBXGroup;
+			children = (
+				845E268D2F60106000A3BD6E /* SystemMonitor.swift */,
+				845E26612F600FEB00A3BD6E /* MonitorPro */,
+				845E26732F600FED00A3BD6E /* MonitorProTests */,
+				845E267D2F600FED00A3BD6E /* MonitorProUITests */,
+				845E26602F600FEB00A3BD6E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		845E26602F600FEB00A3BD6E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				845E265F2F600FEB00A3BD6E /* MonitorPro.app */,
+				845E26702F600FED00A3BD6E /* MonitorProTests.xctest */,
+				845E267A2F600FED00A3BD6E /* MonitorProUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		845E26612F600FEB00A3BD6E /* MonitorPro */ = {
+			isa = PBXGroup;
+			children = (
+				845E26622F600FEB00A3BD6E /* MonitorProApp.swift */,
+				845E26642F600FEB00A3BD6E /* ContentView.swift */,
+				845E26662F600FED00A3BD6E /* Assets.xcassets */,
+				845E266B2F600FED00A3BD6E /* MonitorPro.entitlements */,
+				845E26682F600FED00A3BD6E /* Preview Content */,
+			);
+			path = MonitorPro;
+			sourceTree = "<group>";
+		};
+		845E26682F600FED00A3BD6E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				845E26692F600FED00A3BD6E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		845E26732F600FED00A3BD6E /* MonitorProTests */ = {
+			isa = PBXGroup;
+			children = (
+				845E26742F600FED00A3BD6E /* MonitorProTests.swift */,
+			);
+			path = MonitorProTests;
+			sourceTree = "<group>";
+		};
+		845E267D2F600FED00A3BD6E /* MonitorProUITests */ = {
+			isa = PBXGroup;
+			children = (
+				845E267E2F600FED00A3BD6E /* MonitorProUITests.swift */,
+				845E26802F600FED00A3BD6E /* MonitorProUITestsLaunchTests.swift */,
+			);
+			path = MonitorProUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		845E265E2F600FEB00A3BD6E /* MonitorPro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 845E26842F600FED00A3BD6E /* Build configuration list for PBXNativeTarget "MonitorPro" */;
+			buildPhases = (
+				845E265B2F600FEB00A3BD6E /* Sources */,
+				845E265C2F600FEB00A3BD6E /* Frameworks */,
+				845E265D2F600FEB00A3BD6E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MonitorPro;
+			productName = MonitorPro;
+			productReference = 845E265F2F600FEB00A3BD6E /* MonitorPro.app */;
+			productType = "com.apple.product-type.application";
+		};
+		845E266F2F600FED00A3BD6E /* MonitorProTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 845E26872F600FED00A3BD6E /* Build configuration list for PBXNativeTarget "MonitorProTests" */;
+			buildPhases = (
+				845E266C2F600FED00A3BD6E /* Sources */,
+				845E266D2F600FED00A3BD6E /* Frameworks */,
+				845E266E2F600FED00A3BD6E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				845E26722F600FED00A3BD6E /* PBXTargetDependency */,
+			);
+			name = MonitorProTests;
+			productName = MonitorProTests;
+			productReference = 845E26702F600FED00A3BD6E /* MonitorProTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		845E26792F600FED00A3BD6E /* MonitorProUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 845E268A2F600FED00A3BD6E /* Build configuration list for PBXNativeTarget "MonitorProUITests" */;
+			buildPhases = (
+				845E26762F600FED00A3BD6E /* Sources */,
+				845E26772F600FED00A3BD6E /* Frameworks */,
+				845E26782F600FED00A3BD6E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				845E267C2F600FED00A3BD6E /* PBXTargetDependency */,
+			);
+			name = MonitorProUITests;
+			productName = MonitorProUITests;
+			productReference = 845E267A2F600FED00A3BD6E /* MonitorProUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		845E26572F600FEB00A3BD6E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					845E265E2F600FEB00A3BD6E = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					845E266F2F600FED00A3BD6E = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 845E265E2F600FEB00A3BD6E;
+					};
+					845E26792F600FED00A3BD6E = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 845E265E2F600FEB00A3BD6E;
+					};
+				};
+			};
+			buildConfigurationList = 845E265A2F600FEB00A3BD6E /* Build configuration list for PBXProject "MonitorPro" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 845E26562F600FEB00A3BD6E;
+			productRefGroup = 845E26602F600FEB00A3BD6E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				845E265E2F600FEB00A3BD6E /* MonitorPro */,
+				845E266F2F600FED00A3BD6E /* MonitorProTests */,
+				845E26792F600FED00A3BD6E /* MonitorProUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		845E265D2F600FEB00A3BD6E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				845E266A2F600FED00A3BD6E /* Preview Assets.xcassets in Resources */,
+				845E26672F600FED00A3BD6E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		845E266E2F600FED00A3BD6E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		845E26782F600FED00A3BD6E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		845E265B2F600FEB00A3BD6E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				845E268E2F60106000A3BD6E /* SystemMonitor.swift in Sources */,
+				845E26652F600FEB00A3BD6E /* ContentView.swift in Sources */,
+				845E26632F600FEB00A3BD6E /* MonitorProApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		845E266C2F600FED00A3BD6E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				845E26752F600FED00A3BD6E /* MonitorProTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		845E26762F600FED00A3BD6E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				845E267F2F600FED00A3BD6E /* MonitorProUITests.swift in Sources */,
+				845E26812F600FED00A3BD6E /* MonitorProUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		845E26722F600FED00A3BD6E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 845E265E2F600FEB00A3BD6E /* MonitorPro */;
+			targetProxy = 845E26712F600FED00A3BD6E /* PBXContainerItemProxy */;
+		};
+		845E267C2F600FED00A3BD6E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 845E265E2F600FEB00A3BD6E /* MonitorPro */;
+			targetProxy = 845E267B2F600FED00A3BD6E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		845E26822F600FED00A3BD6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		845E26832F600FED00A3BD6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		845E26852F600FED00A3BD6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MonitorPro/MonitorPro.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MonitorPro/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MonitorPro.MonitorPro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		845E26862F600FED00A3BD6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MonitorPro/MonitorPro.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MonitorPro/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MonitorPro.MonitorPro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		845E26882F600FED00A3BD6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MonitorPro.MonitorProTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MonitorPro.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MonitorPro";
+			};
+			name = Debug;
+		};
+		845E26892F600FED00A3BD6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MonitorPro.MonitorProTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MonitorPro.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MonitorPro";
+			};
+			name = Release;
+		};
+		845E268B2F600FED00A3BD6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MonitorPro.MonitorProUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = MonitorPro;
+			};
+			name = Debug;
+		};
+		845E268C2F600FED00A3BD6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MonitorPro.MonitorProUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = MonitorPro;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		845E265A2F600FEB00A3BD6E /* Build configuration list for PBXProject "MonitorPro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				845E26822F600FED00A3BD6E /* Debug */,
+				845E26832F600FED00A3BD6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		845E26842F600FED00A3BD6E /* Build configuration list for PBXNativeTarget "MonitorPro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				845E26852F600FED00A3BD6E /* Debug */,
+				845E26862F600FED00A3BD6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		845E26872F600FED00A3BD6E /* Build configuration list for PBXNativeTarget "MonitorProTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				845E26882F600FED00A3BD6E /* Debug */,
+				845E26892F600FED00A3BD6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		845E268A2F600FED00A3BD6E /* Build configuration list for PBXNativeTarget "MonitorProUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				845E268B2F600FED00A3BD6E /* Debug */,
+				845E268C2F600FED00A3BD6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 845E26572F600FEB00A3BD6E /* Project object */;
+}
