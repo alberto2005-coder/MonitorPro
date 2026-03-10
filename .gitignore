@@ -4,6 +4,14 @@
 # ============================================================
 
 # --------------------
+# Exports / App compilada
+# --------------------
+# Carpetas generadas al exportar/archivar la app desde Xcode
+MonitorPro\ 2026-*/
+MonitorPro\ */
+*.app/
+
+# --------------------
 # Xcode
 # --------------------
 # Archivos de usuario (configuración local de cada desarrollador)
