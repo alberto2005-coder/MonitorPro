@@ -1,0 +1,57 @@
+name: Build MonitorPro.app
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '**.md'
+      - 'screenshots/**'
+  workflow_dispatch:
+  release:
+    types: [ published ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+
+      - name: Show schemes
+        run: xcodebuild -list -project MonitorPro.xcodeproj
+
+      - name: Build (Release)
+        run: |
+          xcodebuild -project MonitorPro.xcodeproj \
+                     -scheme MonitorPro \
+                     -configuration Release \
+                     -derivedDataPath build \
+                     CODE_SIGN_IDENTITY="-" \
+                     CODE_SIGNING_REQUIRED=NO \
+                     build
+
+      - name: Package .app
+        run: |
+          APP_PATH=$(find build/Build/Products -name "MonitorPro.app" -maxdepth 3 | head -n 1)
+          if [ -z "$APP_PATH" ]; then
+            echo "❌ MonitorPro.app no se encontró tras la compilación"
+            exit 1
+          fi
+          echo "App encontrada en: $APP_PATH"
+          ditto -c -k --sequesterRsrc --keepParent "$APP_PATH" MonitorPro.app.zip
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MonitorPro.app
+          path: MonitorPro.app.zip
+          if-no-files-found: error
+
+      - name: Attach to Release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: MonitorPro.app.zip
