@@ -1,376 +1,457 @@
-<div align="center">
+# MonitorPro
 
-# ⚡ MonitorPro
+[![Swift](https://img.shields.io/badge/Swift-5.9%2B-FA7343?logo=swift&logoColor=white)](https://swift.org)
+[![macOS](https://img.shields.io/badge/macOS-13%2B-000000?logo=apple&logoColor=white)](https://www.apple.com/macos)
+[![SwiftUI](https://img.shields.io/badge/SwiftUI-Swift%20Charts-0F62FE?logo=swift&logoColor=white)](https://developer.apple.com/xcode/swiftui/)
+[![CI](https://github.com/alberto2005-coder/MonitorPro/actions/workflows/build-app.yml/badge.svg)](https://github.com/alberto2005-coder/MonitorPro/actions/workflows/build-app.yml)
+[![MIT](https://img.shields.io/badge/Licencia-MIT-green)](LICENSE)
 
-**Monitor de sistema en tiempo real para macOS · Real-time macOS system monitor**
+[Español](#español) · [English](#english)
 
-[![Swift](https://img.shields.io/badge/Swift-5.9+-FA7343?style=for-the-badge&logo=swift&logoColor=white)](https://swift.org)
-[![Platform](https://img.shields.io/badge/macOS-13%2B-000000?style=for-the-badge&logo=apple&logoColor=white)](https://www.apple.com/macos)
-[![SwiftUI](https://img.shields.io/badge/SwiftUI-Framework-0F62FE?style=for-the-badge&logo=swift&logoColor=white)](https://developer.apple.com/xcode/swiftui/)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-
-</div>
-
----
-
-## 🌐 Idiomas · Languages
-
-- 🇪🇸 [Español](#-español)
-- 🇬🇧 [English](#-english)
+> Desarrollado por **[Alberto Ortiz](https://github.com/alberto2005-coder/)** · [albertoortiz.is-a.dev](https://albertoortiz.is-a.dev/)
 
 ---
 
-# 🇪🇸 Español
+## Español
 
-## 📋 Índice
+### Índice
 
-1. [¿Qué es MonitorPro?](#-qué-es-monitorpro)
-2. [Capturas de pantalla](#-capturas-de-pantalla)
-3. [Características](#-características)
-4. [Requisitos](#-requisitos)
-5. [Instalación](#-instalación)
-6. [Uso](#-uso)
-7. [Arquitectura del proyecto](#-arquitectura-del-proyecto)
-8. [Tecnologías utilizadas](#-tecnologías-utilizadas)
-9. [Contribuir](#-contribuir)
-10. [Licencia](#-licencia)
+- [Descripción](#descripción)
+- [Capturas de pantalla](#capturas-de-pantalla)
+- [Características](#características)
+- [Requisitos](#requisitos)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Notificaciones](#notificaciones)
+- [Arquitectura del proyecto](#arquitectura-del-proyecto)
+- [Flujo de datos](#flujo-de-datos)
+- [Tecnologías utilizadas](#tecnologías-utilizadas)
+- [Integración continua](#integración-continua)
+- [Pruebas](#pruebas)
+- [Limitaciones conocidas](#limitaciones-conocidas)
+- [Licencia](#licencia)
 
----
+### Descripción
 
-## 🚀 ¿Qué es MonitorPro?
+**MonitorPro** es una aplicación nativa de **barra de menú para macOS** que muestra el estado del sistema en tiempo real: carga de CPU, historial de CPU, memoria de la app, disco, tiempo activo y velocidad de red.
 
-**MonitorPro** es una aplicación nativa de **barra de menú para macOS** que te permite monitorear los recursos de tu Mac en tiempo real, directamente desde la barra superior del sistema. Sin ventanas flotantes, sin distracciones — siempre a un clic de distancia.
+No abre ventanas flotantes ni ocupa el Dock: el icono vive en la barra superior y muestra el porcentaje de CPU. Al hacer clic se despliega un panel de 320 puntos con todos los datos.
 
-> 💡 Diseñado para ser **ligero**, **discreto** y **siempre visible** en tu flujo de trabajo diario.
+> [!NOTE]
+> La interfaz de la aplicación está **solo en español**. Este README está en español e inglés.
 
----
-
-## 📸 Capturas de pantalla
+### Capturas de pantalla
 
 <div align="center">
 
-### V2 - Gráficos, Red y Menú Dinámico
-<p align="center">
-  <img src="screenshots/screenshot_v2_1.png" width="45%" alt="MonitorPro V2 Dashboard" />
-  <img src="screenshots/screenshot_v2_2.png" width="45%" alt="MonitorPro V2 Menu" />
-</p>
+**V2 — gráfica de CPU, red y menú dinámico**
 
-*Dashboard desplegable de MonitorPro V2 en acción*
+<img src="screenshots/screenshot_v2_1.png" width="45%" alt="Panel de MonitorPro V2" />
+<img src="screenshots/screenshot_v2_2.png" width="45%" alt="Menú de MonitorPro V2" />
 
-### V1 - Versión Inicial
-![MonitorPro Dashboard V1](screenshots/screenshot.png)
+**V1 — versión inicial**
+
+<img src="screenshots/screenshot.png" width="70%" alt="Panel de MonitorPro V1" />
 
 </div>
 
----
+### Características
 
-## ✨ Características
+| Métrica | Qué muestra | Actualización |
+|---|---|---|
+| **CPU** | Nombre y modelo del procesador (`sysctlbyname`) | Al iniciar |
+| **Núcleos** | Número de núcleos activos | Al iniciar |
+| **Tiempo activo** | Horas y minutos desde el arranque | Cada segundo |
+| **Disco** | GB libres y totales de `/` | Cada segundo |
+| **Carga de CPU** | Porcentaje real calculado por diferencial de ticks (user + system + nice frente a idle) | Cada segundo |
+| **Historial de CPU** | Gráfica con las últimas 60 muestras, aproximadamente un minuto | Cada segundo |
+| **Memoria** | MB residentes que usa **MonitorPro**, no la RAM total del sistema | Cada segundo |
+| **Red** | Velocidad de bajada y subida de las interfaces activas, sin loopback | Cada segundo |
 
-| Métrica            | Descripción                                              | Actualización |
-|--------------------|----------------------------------------------------------|---------------|
-| 🟠 **CPU**        | Nombre y modelo del procesador                           | Al inicio     |
-| 🔵 **Núcleos**    | Número de núcleos activos                                | Al inicio     |
-| 🟢 **Uptime**     | Tiempo de actividad del sistema                          | Cada segundo  |
-| ⚫ **Disco**      | Espacio libre y total en GB                              | Cada segundo  |
-| 📊 **Carga CPU**  | Uso real por diferencial de ticks (user+sys vs idle)     | Cada segundo  |
-| 💾 **RAM App**    | Memoria RAM usada por la app                             | Cada segundo  |
+Además:
 
-- ✅ Vive en la **barra de menú** — no ocupa espacio en el Dock
-- ✅ Interfaz **nativa SwiftUI** — fluida y eficiente
-- ✅ Actualizaciones en **tiempo real** (cada 1 segundo)
-- ✅ Carga de CPU **medida con precisión real** por núcleo (diferencial de ticks)
-- ✅ Botón para **cerrar** la app desde el propio dashboard
-- ✅ **0 dependencias externas** — usa únicamente frameworks de Apple
+- **Barra de menú** con el porcentaje de CPU en el título y estilo `.window`.
+- **Swift Charts** para la gráfica de CPU (línea y área, escala fija de 0 a 100 %).
+- **Notificaciones del sistema** cuando la CPU supera el 90 % o queda menos del 10 % de disco libre.
+- **Arranque al iniciar sesión** mediante `SMAppService.mainApp`, configurable desde el menú del engranaje.
+- **Salir** desde el mismo menú, sin usar el Monitor de Actividad.
+- **Sin dependencias externas**: solo frameworks de Apple.
 
----
+### Requisitos
 
-## 🛠 Requisitos
+- **macOS 13 Ventura** o superior (`MenuBarExtra` y `SMAppService`).
+- **Xcode 15** o superior.
+- **Swift 5.9** o superior.
+- Mac con Apple Silicon o Intel.
 
-- **macOS** 13 Ventura o superior
-- **Xcode** 15 o superior
-- **Swift** 5.9 o superior
-- Mac con arquitectura Apple Silicon o Intel
+### Instalación
 
----
-
-## 📦 Instalación
-
-### Desde el código fuente
+#### Desde el código fuente
 
 1. **Clona el repositorio:**
+
    ```bash
    git clone https://github.com/alberto2005-coder/MonitorPro.git
    cd MonitorPro
    ```
 
 2. **Abre el proyecto en Xcode:**
+
    ```bash
    open MonitorPro.xcodeproj
    ```
 
-3. **Selecciona tu Mac como destino** en la barra de Xcode.
+3. **Selecciona tu Mac** como destino en la barra de Xcode.
 
 4. **Compila y ejecuta** con `⌘ + R`.
 
-> ⚠️ Es posible que necesites configurar tu **Team de desarrollo** en *Signing & Capabilities* con tu Apple ID.
+> [!IMPORTANT]
+> Para ejecutarlo en tu Mac puede que necesites configurar un **Team de desarrollo** en *Signing & Capabilities* con tu Apple ID. La app tiene el **App Sandbox** activado.
 
----
+#### Desde la terminal
 
-## 📖 Uso
-
-1. Al ejecutar la app, verás un icono dinámico en tu barra de menú superior con el % de CPU.
-2. Haz **clic** en el icono para abrir el dashboard.
-3. Visualiza en tiempo real el estado de tu sistema (Gráfica de CPU, Red, Disco, etc).
-4. Haz clic en el **engranaje ⚙️** superior derecho para habilitar el **Auto-arranque** o salir de la app.
-
----
-
-## 🗂 Arquitectura del proyecto
-
+```bash
+xcodebuild -project MonitorPro.xcodeproj \
+           -scheme MonitorPro \
+           -configuration Release \
+           build
 ```
+
+#### Artefacto de GitHub Actions
+
+Cada push a `main` que no sea solo documentación genera `MonitorPro.app.zip` como artefacto de la ejecución. En las releases publicadas, el ZIP se adjunta automáticamente a la release. El binario va **sin firmar**, así que macOS puede pedir confirmación en *Privacidad y seguridad* la primera vez.
+
+### Uso
+
+1. Al abrir la app aparece un icono con forma de medidor en la barra de menú y el porcentaje de CPU actual.
+2. Haz **clic** en el icono para desplegar el panel.
+3. El panel muestra, de arriba abajo:
+   - Procesador, núcleos, tiempo activo y disco libre/total.
+   - Velocidad de bajada y subida.
+   - Gráfica de CPU de las últimas 60 muestras y RAM usada por la app.
+4. Pulsa el **engranaje** de la esquina superior derecha para:
+   - Activar o desactivar **«Arrancar al iniciar sesión»**.
+   - **Salir** de la aplicación.
+
+### Notificaciones
+
+MonitorPro pide permiso de notificaciones al arrancar. Después revisa las condiciones cada segundo, pero **como máximo envía una notificación cada 5 minutos** (el enfriamiento es compartido entre ambos avisos):
+
+| Condición | Aviso |
+|---|---|
+| Carga de CPU **superior al 90 %** | «Alerta de CPU» |
+| Espacio libre **inferior al 10 %** del total | «Alerta de Disco» |
+
+Si la CPU está alta y el disco también está bajo, se envía primero el aviso de CPU. Los umbrales están escritos en el código (`SystemMonitor.swift`), no son configurables desde la interfaz.
+
+### Arquitectura del proyecto
+
+```text
 MonitorPro/
 ├── MonitorPro/
-│   ├── MonitorProApp.swift      # Punto de entrada — MenuBarExtra
-│   ├── ContentView.swift        # UI principal del dashboard
-│   ├── MonitorPro.entitlements  # Permisos de la app
-│   └── Assets.xcassets/         # Recursos (iconos, colores)
-├── SystemMonitor.swift          # Lógica de monitoreo del sistema
-├── MonitorProTests/             # Tests unitarios
-├── MonitorProUITests/           # Tests de interfaz
-├── MonitorPro.xcodeproj/        # Configuración del proyecto Xcode
-├── .gitignore
-├── .gitattributes
+│   ├── MonitorProApp.swift      # @main y MenuBarExtra
+│   ├── ContentView.swift        # Panel SwiftUI, gráfica y menú
+│   ├── MonitorPro.entitlements  # App Sandbox
+│   └── Assets.xcassets/         # Iconos y colores
+├── SystemMonitor.swift          # ObservableObject con todas las métricas
+├── MonitorProTests/             # Tests unitarios (plantilla de Xcode)
+├── MonitorProUITests/           # Tests de interfaz (plantilla de Xcode)
+├── MonitorPro.xcodeproj/        # Proyecto de Xcode
+├── screenshots/                 # Capturas usadas en este README
+├── .github/workflows/build-app.yml
+├── LICENSE
 └── README.md
 ```
 
+`SystemMonitor.swift` está en la raíz del repositorio, no dentro de `MonitorPro/`; el proyecto de Xcode lo referencia desde ahí.
+
 ### Flujo de datos
 
-```
+```text
 SystemMonitor (ObservableObject)
-    │
-    ├── init() ──► getCPUName()  (una sola vez)
-    │
-    ├── Timer cada 1s ──► getMemoryUsage()   → usageMB
-    │                ──► updateDiskSpace()   → diskFreeGB, diskTotalGB
-    │                ──► getUptime()         → uptime
-    │                ──► updateCPULoad()     → cpuLoad (ticks reales)
-    │
-    ├── deinit ──► timer.invalidate()  (limpieza de memoria)
-    │
-    └── @Published vars ──► ContentView (SwiftUI) ──► UI actualizada
+├── init()
+│   ├── getCPUName()            → processorName
+│   ├── permiso de notificaciones
+│   └── startMonitoring()
+│
+├── Timer cada 1 s
+│   ├── getMemoryUsage()        → usageMB
+│   ├── updateDiskSpace()       → diskFreeGB, diskTotalGB
+│   ├── getUptime()             → uptime
+│   ├── updateCPULoad()         → cpuLoad, cpuHistory
+│   ├── updateNetworkTraffic()  → downloadSpeed, uploadSpeed
+│   └── checkAndNotify()        → notificación si procede
+│
+├── deinit → timer.invalidate()
+│
+└── @Published → ContentView (SwiftUI) → interfaz
 ```
 
+La carga de CPU se calcula con `host_processor_info` y `PROCESSOR_CPU_LOAD_INFO`: se guardan los ticks de la muestra anterior y se comparan con los actuales, de modo que el porcentaje refleja el uso real desde la última lectura y no la media desde el arranque.
+
+### Tecnologías utilizadas
+
+| Tecnología | Uso |
+|---|---|
+| **SwiftUI** | Interfaz y `MenuBarExtra` |
+| **Swift Charts** | Gráfica de historial de CPU |
+| **Foundation** | `ProcessInfo`, `FileManager`, `Timer` |
+| **UserNotifications** | Avisos de CPU y disco |
+| **ServiceManagement** | Arranque al iniciar sesión |
+| **mach / sysctl** | CPU, memoria y ticks del procesador |
+| **getifaddrs** | Tráfico de red por interfaz |
+
+### Integración continua
+
+`.github/workflows/build-app.yml` se ejecuta en `macos-latest` cuando:
+
+- hay un push a `main` (ignorando cambios solo en Markdown y `screenshots/`);
+- se lanza manualmente con `workflow_dispatch`;
+- se publica una release.
+
+Compila con `xcodebuild` en configuración Release sin firma (`CODE_SIGN_IDENTITY="-"`, `CODE_SIGNING_REQUIRED=NO`), empaqueta el `.app` con `ditto` y lo sube como artefacto `MonitorPro.app`. En releases, `softprops/action-gh-release` adjunta el ZIP.
+
+### Pruebas
+
+```bash
+xcodebuild test -project MonitorPro.xcodeproj -scheme MonitorPro -destination 'platform=macOS'
+```
+
+`MonitorProTests` y `MonitorProUITests` son las plantillas de Xcode: comprueban que la app arranca, pero **no** validan los cálculos de CPU, disco, red ni notificaciones. Si amplías el proyecto, extrae la lógica de `SystemMonitor` a funciones puras y añade pruebas con muestras de ticks conocidas.
+
+### Limitaciones conocidas
+
+- **La RAM mostrada es la de la app**, no la del sistema. Para la memoria global haría falta `host_statistics64` con `vm_statistics64`.
+- **El historial de CPU son 60 muestras de 1 segundo**: algo menos de un minuto, no una hora.
+- **La red suma todas las interfaces activas** y descarta loopback; una VPN o una interfaz virtual también cuenta.
+- **Umbrales fijos** al 90 % de CPU y 10 % de disco, sin ajustes en la interfaz.
+- **Sin firma ni notarización** en el artefacto de CI: macOS puede bloquearlo al descargarlo.
+- **Interfaz solo en español**, aunque el README sea bilingüe.
+- **Sin preferencias persistentes**: el estado de arranque al iniciar sesión lo gestiona el sistema, no la app.
+
+### Licencia
+
+Distribuido bajo la **Licencia MIT**. Consulta [LICENSE](LICENSE). © 2026 Alberto Ortiz.
+
 ---
 
-## 🧰 Tecnologías utilizadas
+## English
 
-| Tecnología             | Uso                                          |
-|------------------------|----------------------------------------------|
-| **SwiftUI**            | Framework de interfaz de usuario             |
-| **Foundation**         | Manejo de procesos y sistema                 |
-| **MenuBarExtra**       | Integración en barra de menú                 |
-| **mach / sysctlbyname**| Lectura de métricas del sistema a bajo nivel |
-| **FileManager**        | Consulta del espacio en disco                |
+### Table of contents
 
----
+- [Overview](#overview)
+- [Screenshots](#screenshots)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Notifications](#notifications)
+- [Project structure](#project-structure)
+- [Data flow](#data-flow)
+- [Technologies](#technologies)
+- [Continuous integration](#continuous-integration)
+- [Tests](#tests)
+- [Known limitations](#known-limitations)
+- [License](#license)
 
-## 🤝 Contribuir
+### Overview
 
-¡Las contribuciones son bienvenidas! Si quieres mejorar MonitorPro:
+**MonitorPro** is a native **macOS menu bar app** that shows the state of your system in real time: CPU load, CPU history, the app's own memory use, disk space, uptime and network throughput.
 
-1. Haz un **fork** del repositorio
-2. Crea una rama: `git checkout -b feature/nueva-funcionalidad`
-3. Haz tus cambios y commitea: `git commit -m "feat: añadir nueva funcionalidad"`
-4. Haz **push**: `git push origin feature/nueva-funcionalidad`
-5. Abre un **Pull Request**
+It opens no floating windows and takes no Dock space: the icon lives in the menu bar and shows the CPU percentage. Clicking it opens a 320-point panel with all the readings.
 
----
+> [!NOTE]
+> The application UI is **Spanish only**. This README is available in Spanish and English.
 
-## 📄 Licencia
-
-Este proyecto está bajo la licencia **MIT**. Consulta el archivo [LICENSE](LICENSE) para más detalles.
-
----
+### Screenshots
 
 <div align="center">
-Hecho con ❤️ y Swift en macOS
-</div>
 
----
----
+**V2 — CPU chart, network and dynamic menu**
 
-# 🇬🇧 English
+<img src="screenshots/screenshot_v2_1.png" width="45%" alt="MonitorPro V2 panel" />
+<img src="screenshots/screenshot_v2_2.png" width="45%" alt="MonitorPro V2 menu" />
 
-## 📋 Table of Contents
+**V1 — initial release**
 
-1. [What is MonitorPro?](#-what-is-monitorpro)
-2. [Screenshots](#-screenshots)
-3. [Features](#-features)
-4. [Requirements](#-requirements)
-5. [Installation](#-installation)
-6. [Usage](#-usage)
-7. [Project Architecture](#-project-architecture)
-8. [Technologies Used](#-technologies-used)
-9. [Contributing](#-contributing)
-10. [License](#-license)
-
----
-
-## 🚀 What is MonitorPro?
-
-**MonitorPro** is a native **macOS menu bar application** that lets you monitor your Mac's resources in real time, directly from the system's top bar. No floating windows, no distractions — always one click away.
-
-> 💡 Designed to be **lightweight**, **unobtrusive**, and **always visible** in your daily workflow.
-
----
-
-## 📸 Screenshots
-
-<div align="center">
-
-### V2 - Charts, Network & Dynamic Menu
-<p align="center">
-  <img src="screenshots/screenshot_v2_1.png" width="45%" alt="MonitorPro V2 Dashboard" />
-  <img src="screenshots/screenshot_v2_2.png" width="45%" alt="MonitorPro V2 Menu" />
-</p>
-
-*MonitorPro V2 dropdown dashboard in action*
-
-### V1 - Initial Release
-![MonitorPro Dashboard V1](screenshots/screenshot.png)
+<img src="screenshots/screenshot.png" width="70%" alt="MonitorPro V1 panel" />
 
 </div>
 
----
+### Features
 
-## ✨ Features
+| Metric | What it shows | Refresh |
+|---|---|---|
+| **CPU** | Processor brand string (`sysctlbyname`) | At launch |
+| **Cores** | Number of active cores | At launch |
+| **Uptime** | Hours and minutes since boot | Every second |
+| **Disk** | Free and total GB of `/` | Every second |
+| **CPU load** | Real percentage from tick deltas (user + system + nice versus idle) | Every second |
+| **CPU history** | Chart with the last 60 samples, roughly one minute | Every second |
+| **Memory** | Resident MB used by **MonitorPro**, not the system's total RAM | Every second |
+| **Network** | Download and upload speed across active interfaces, loopback excluded | Every second |
 
-| Metric             | Description                                              | Refresh Rate |
-|--------------------|----------------------------------------------------------|--------------|
-| 🟠 **CPU**         | Processor name and model                                 | On start     |
-| 🔵 **Cores**       | Number of active processor cores                         | On start     |
-| 🟢 **Uptime**      | System uptime                                            | Every second |
-| ⚫ **Disk**        | Free and total disk space in GB                          | Every second |
-| 📊 **CPU Load**    | Real usage via tick differential (user+sys vs idle)      | Every second |
-| 💾 **App RAM**     | RAM memory used by the app                               | Every second |
+In addition:
 
-- ✅ Lives in the **menu bar** — no Dock icon
-- ✅ Native **SwiftUI** interface — smooth and efficient
-- ✅ **Real-time** updates (every 1 second)
-- ✅ CPU load measured with **real per-core tick differential**
-- ✅ **Close** button built into the dashboard
-- ✅ **Zero external dependencies** — uses only Apple frameworks
+- **Menu bar** with the CPU percentage in the title and `.window` style.
+- **Swift Charts** for the CPU graph (line and area, fixed 0–100 % scale).
+- **System notifications** when CPU exceeds 90 % or free disk drops below 10 %.
+- **Launch at login** through `SMAppService.mainApp`, toggled from the gear menu.
+- **Quit** from the same menu, without opening Activity Monitor.
+- **No third-party dependencies**: Apple frameworks only.
 
----
+### Requirements
 
-## 🛠 Requirements
+- **macOS 13 Ventura** or later (`MenuBarExtra` and `SMAppService`).
+- **Xcode 15** or later.
+- **Swift 5.9** or later.
+- Apple Silicon or Intel Mac.
 
-- **macOS** 13 Ventura or later
-- **Xcode** 15 or later
-- **Swift** 5.9 or later
-- Mac with Apple Silicon or Intel architecture
+### Installation
 
----
-
-## 📦 Installation
-
-### From source code
+#### From source
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/alberto2005-coder/MonitorPro.git
    cd MonitorPro
    ```
 
 2. **Open the project in Xcode:**
+
    ```bash
    open MonitorPro.xcodeproj
    ```
 
-3. **Select your Mac as the target** in Xcode's toolbar.
+3. **Select your Mac** as the destination in Xcode's toolbar.
 
 4. **Build and run** with `⌘ + R`.
 
-> ⚠️ You may need to configure your **development Team** in *Signing & Capabilities* with your Apple ID.
+> [!IMPORTANT]
+> To run it on your Mac you may need to set a **development Team** under *Signing & Capabilities* with your Apple ID. The app has **App Sandbox** enabled.
 
----
+#### From the terminal
 
-## 📖 Usage
-
-1. When you launch the app, a dynamic icon appears in your top menu bar showing the CPU %.
-2. **Click** the icon to open the dashboard.
-3. View your system's stats in real time (CPU Chart, Network, Disk, etc).
-4. Click the **gear icon ⚙️** at the top right to enable **Launch at login** or quit the app.
-
----
-
-## 🗂 Project Architecture
-
+```bash
+xcodebuild -project MonitorPro.xcodeproj \
+           -scheme MonitorPro \
+           -configuration Release \
+           build
 ```
+
+#### GitHub Actions artifact
+
+Every push to `main` that is not documentation-only produces `MonitorPro.app.zip` as a workflow artifact. On published releases the ZIP is attached to the release automatically. The binary is **unsigned**, so macOS may ask you to confirm it under *Privacy & Security* the first time.
+
+### Usage
+
+1. When the app starts, a gauge icon appears in the menu bar with the current CPU percentage.
+2. **Click** the icon to open the panel.
+3. From top to bottom, the panel shows:
+   - Processor, cores, uptime and free/total disk.
+   - Download and upload speed.
+   - A 60-sample CPU chart and the memory used by the app.
+4. Use the **gear** in the top-right corner to:
+   - Enable or disable **“Arrancar al iniciar sesión”** (launch at login).
+   - **Salir** (quit) the app.
+
+### Notifications
+
+MonitorPro requests notification permission at launch. It then checks the conditions every second but sends **at most one notification every 5 minutes** (the cooldown is shared by both alerts):
+
+| Condition | Alert |
+|---|---|
+| CPU load **above 90 %** | “Alerta de CPU” |
+| Free space **below 10 %** of total | “Alerta de Disco” |
+
+If the CPU is high and disk space is also low, the CPU alert wins. The thresholds are hard-coded in `SystemMonitor.swift`; they are not configurable in the UI.
+
+### Project structure
+
+```text
 MonitorPro/
 ├── MonitorPro/
-│   ├── MonitorProApp.swift      # Entry point — MenuBarExtra
-│   ├── ContentView.swift        # Main dashboard UI
-│   ├── MonitorPro.entitlements  # App permissions
-│   └── Assets.xcassets/         # Resources (icons, colors)
-├── SystemMonitor.swift          # System monitoring logic
-├── MonitorProTests/             # Unit tests
-├── MonitorProUITests/           # UI tests
-├── MonitorPro.xcodeproj/        # Xcode project configuration
-├── .gitignore
-├── .gitattributes
+│   ├── MonitorProApp.swift      # @main and MenuBarExtra
+│   ├── ContentView.swift        # SwiftUI panel, chart and menu
+│   ├── MonitorPro.entitlements  # App Sandbox
+│   └── Assets.xcassets/         # Icons and colours
+├── SystemMonitor.swift          # ObservableObject with all metrics
+├── MonitorProTests/             # Unit tests (Xcode template)
+├── MonitorProUITests/           # UI tests (Xcode template)
+├── MonitorPro.xcodeproj/        # Xcode project
+├── screenshots/                 # Images used by this README
+├── .github/workflows/build-app.yml
+├── LICENSE
 └── README.md
 ```
 
-### Data Flow
+`SystemMonitor.swift` lives at the repository root, not inside `MonitorPro/`; the Xcode project references it from there.
 
-```
+### Data flow
+
+```text
 SystemMonitor (ObservableObject)
-    │
-    ├── init() ──► getCPUName()  (once)
-    │
-    ├── Timer every 1s ──► getMemoryUsage()   → usageMB
-    │                 ──► updateDiskSpace()   → diskFreeGB, diskTotalGB
-    │                 ──► getUptime()         → uptime
-    │                 ──► updateCPULoad()     → cpuLoad (real ticks)
-    │
-    ├── deinit ──► timer.invalidate()  (memory cleanup)
-    │
-    └── @Published vars ──► ContentView (SwiftUI) ──► Updated UI
+├── init()
+│   ├── getCPUName()            → processorName
+│   ├── notification permission
+│   └── startMonitoring()
+│
+├── Timer every 1 s
+│   ├── getMemoryUsage()        → usageMB
+│   ├── updateDiskSpace()       → diskFreeGB, diskTotalGB
+│   ├── getUptime()             → uptime
+│   ├── updateCPULoad()         → cpuLoad, cpuHistory
+│   ├── updateNetworkTraffic()  → downloadSpeed, uploadSpeed
+│   └── checkAndNotify()        → notification when needed
+│
+├── deinit → timer.invalidate()
+│
+└── @Published → ContentView (SwiftUI) → UI
 ```
 
----
+CPU load comes from `host_processor_info` with `PROCESSOR_CPU_LOAD_INFO`: the previous sample's ticks are kept and compared with the current ones, so the percentage reflects real usage since the last reading instead of an average since boot.
 
-## 🧰 Technologies Used
+### Technologies
 
-| Technology              | Usage                                          |
-|-------------------------|------------------------------------------------|
-| **SwiftUI**             | User interface framework                       |
-| **Foundation**          | Process and system management                  |
-| **MenuBarExtra**        | Menu bar integration                           |
-| **mach / sysctlbyname** | Low-level system metrics reading               |
-| **FileManager**         | Disk space queries                             |
+| Technology | Purpose |
+|---|---|
+| **SwiftUI** | UI and `MenuBarExtra` |
+| **Swift Charts** | CPU history chart |
+| **Foundation** | `ProcessInfo`, `FileManager`, `Timer` |
+| **UserNotifications** | CPU and disk alerts |
+| **ServiceManagement** | Launch at login |
+| **mach / sysctl** | CPU, memory and processor ticks |
+| **getifaddrs** | Per-interface network traffic |
 
----
+### Continuous integration
 
-## 🤝 Contributing
+`.github/workflows/build-app.yml` runs on `macos-latest` when:
 
-Contributions are welcome! To improve MonitorPro:
+- a push lands on `main` (Markdown-only and `screenshots/` changes are ignored);
+- it is started manually with `workflow_dispatch`;
+- a release is published.
 
-1. **Fork** the repository
-2. Create a branch: `git checkout -b feature/new-feature`
-3. Make your changes and commit: `git commit -m "feat: add new feature"`
-4. **Push**: `git push origin feature/new-feature`
-5. Open a **Pull Request**
+It builds with `xcodebuild` in Release configuration without signing (`CODE_SIGN_IDENTITY="-"`, `CODE_SIGNING_REQUIRED=NO`), packages the `.app` with `ditto` and uploads it as the `MonitorPro.app` artifact. For releases, `softprops/action-gh-release` attaches the ZIP.
 
----
+### Tests
 
-## 📄 License
+```bash
+xcodebuild test -project MonitorPro.xcodeproj -scheme MonitorPro -destination 'platform=macOS'
+```
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+`MonitorProTests` and `MonitorProUITests` are Xcode's templates: they check that the app launches but do **not** validate the CPU, disk, network or notification logic. If you extend the project, extract `SystemMonitor` logic into pure functions and add tests with known tick samples.
 
----
+### Known limitations
 
-<div align="center">
-Made with ❤️ and Swift on macOS
-</div>
+- **The memory figure is the app's own**, not the system's. System-wide memory would need `host_statistics64` with `vm_statistics64`.
+- **CPU history is 60 one-second samples**: slightly under a minute, not an hour.
+- **Network totals sum every active interface** and skip loopback; a VPN or virtual interface is included.
+- **Fixed thresholds** at 90 % CPU and 10 % disk, with no UI to change them.
+- **The CI artifact is unsigned and not notarised**: macOS may block it after download.
+- **Spanish-only UI**, even though this README is bilingual.
+- **No persisted preferences**: launch-at-login state is owned by the system, not the app.
+
+### License
+
+Distributed under the **MIT License**. See [LICENSE](LICENSE). © 2026 Alberto Ortiz.
